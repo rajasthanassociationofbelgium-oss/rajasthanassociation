@@ -24,15 +24,27 @@ nav {
   top:0;
   z-index:1000;
 }
-nav img {height:50px;}
+.logo {
+  height:50px;
+  animation:logoEntry 1.2s ease, logoFloat 3s ease-in-out infinite 1.2s;
+}
 nav a {
   color:white;
   margin:10px;
   text-decoration:none;
-  font-weight:500;
 }
 
-/* HERO SLIDER */
+/* LOGO ANIMATION */
+@keyframes logoEntry {
+  from {opacity:0; transform:scale(0.5);}
+  to {opacity:1; transform:scale(1);}
+}
+@keyframes logoFloat {
+  0%,100% {transform:translateY(0);}
+  50% {transform:translateY(-5px);}
+}
+
+/* HERO */
 .hero {
   height:90vh;
   position:relative;
@@ -42,21 +54,17 @@ nav a {
   align-items:center;
   color:white;
   text-align:center;
-  overflow:hidden;
 }
-
 .hero::before {
   content:"";
   position:absolute;
   width:100%;
   height:100%;
   background-size:cover;
-  background-position:center;
   animation:slider 18s infinite;
   z-index:-1;
   filter:brightness(0.6);
 }
-
 @keyframes slider {
   0% {background-image:url('images/photo1.jpg');}
   33% {background-image:url('images/photo4.jpg');}
@@ -64,28 +72,20 @@ nav a {
   100% {background-image:url('images/photo1.jpg');}
 }
 
-.hero h1 {
-  font-size:42px;
-}
-.hero p {
-  font-size:18px;
-}
-
 /* BUTTON */
 .btn {
   margin-top:20px;
   padding:14px 28px;
-  background:linear-gradient(45deg,#25D366,#1ebe5d);
+  background:#25D366;
   color:white;
   border-radius:50px;
   text-decoration:none;
   font-weight:bold;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
   transition:0.3s;
 }
 .btn:hover {transform:scale(1.1);}
 
-/* SECTIONS */
+/* SECTION */
 .section {
   padding:70px 20px;
   text-align:center;
@@ -96,9 +96,6 @@ nav a {
 .section.show {
   opacity:1;
   transform:translateY(0);
-}
-.section h2 {
-  color:#8B0000;
 }
 
 /* CARDS */
@@ -114,10 +111,6 @@ nav a {
   border-radius:15px;
   background:white;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  transition:0.3s;
-}
-.card:hover {
-  transform:translateY(-10px);
 }
 
 /* GALLERY */
@@ -125,18 +118,12 @@ nav a {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:15px;
-  padding:20px;
 }
 .gallery img {
   width:100%;
   height:220px;
   object-fit:cover;
   border-radius:12px;
-  transition:0.3s;
-}
-.gallery img:hover {
-  transform:scale(1.08);
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* CONTACT */
@@ -148,33 +135,20 @@ input, textarea {
   width:100%;
   padding:12px;
   margin:10px 0;
-  border-radius:8px;
-  border:1px solid #ddd;
 }
 
 /* FOOTER */
 footer {
   background:#8B0000;
   color:white;
-  text-align:center;
   padding:20px;
-}
-
-/* FLOAT */
-.float {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+  text-align:center;
 }
 
 /* MOBILE */
 @media(max-width:768px){
 nav {flex-direction:column;}
-.hero h1 {font-size:28px;}
-.cards {flex-direction:column;}
+.hero h1 {font-size:26px;}
 }
 </style>
 </head>
@@ -183,7 +157,7 @@ nav {flex-direction:column;}
 
 <!-- NAV -->
 <nav>
-<img src="logo.png">
+<img src="logo.png" class="logo">
 <div>
 <a href="#">Home</a>
 <a href="#about">About</a>
@@ -200,116 +174,84 @@ nav {flex-direction:column;}
 <h1>Rajasthan Association of Belgium 🇧🇪</h1>
 <p>Making Rajasthan visible in Belgium • Culture • Community • Traditions</p>
 
-<a href="https://chat.whatsapp.com/JDwIh6qdzNmEdoDYEeRovA" class="btn">Join Our Community 🤝</a>
+<a href="https://chat.whatsapp.com/JDwIh6qdzNmEdoDYEeRovA" class="btn">Join Community 🤝</a>
 
-<div style="display:flex; gap:40px; margin-top:40px; flex-wrap:wrap; justify-content:center;">
+<div style="display:flex; gap:40px; margin-top:40px;">
 <div><h2>100+</h2><p>Members</p></div>
 <div><h2>1+</h2><p>Events</p></div>
 <div><h2>Belgium 🇧🇪</h2><p>Presence</p></div>
 </div>
-
-<p style="margin-top:20px;">Join a growing Rajasthani community 🌸</p>
-
 </div>
 
 <!-- ABOUT -->
 <div class="section" id="about">
 <h2>About Us</h2>
-<p>We are building a vibrant Rajasthani community in Belgium through culture and traditions.</p>
+<p>Building Rajasthani community in Belgium.</p>
 </div>
 
 <!-- EVENTS -->
 <div class="section" id="events">
-<h2>Our Events</h2>
+<h2>Events</h2>
 <div class="cards">
-<div class="card">
-<h3>Gangaur 2026 🌸</h3>
-<p>Our first successful celebration.</p>
-</div>
-<div class="card">
-<h3>Haryali Teej 🌿</h3>
-<p>Upcoming community event.</p>
-</div>
+<div class="card">Gangaur 🌸</div>
+<div class="card">Teej 🌿</div>
 </div>
 </div>
 
 <!-- GALLERY -->
 <div class="section" id="gallery">
-<h2>Our Moments 📸</h2>
-
+<h2>Gallery</h2>
 <div class="gallery">
 <img src="images/photo1.jpg">
 <img src="images/photo2.jpg">
 <img src="images/photo3.jpg">
 <img src="images/photo4.jpg">
-<img src="images/photo5.jpg">
-<img src="images/photo6.jpg">
+</div>
 </div>
 
-<a class="btn" href="https://drive.google.com/drive/folders/1YsfNeix-xWeQBiAVkyshauUg2ghuz3wb?usp=drive_link" target="_blank">
-View Full Gallery
-</a>
-</div>
-
-<!-- INSTAGRAM -->
+<!-- INSTAGRAM (REAL EMBED) -->
 <div class="section">
-<h2>Instagram 📸</h2>
+<h2>Instagram</h2>
 
-<div class="gallery">
-<a href="https://www.instagram.com/rajasthanassociation.be/" target="_blank">
-<img src="images/photo1.jpg">
-</a>
-<a href="https://www.instagram.com/rajasthanassociation.be/" target="_blank">
-<img src="images/photo2.jpg">
-</a>
-<a href="https://www.instagram.com/rajasthanassociation.be/" target="_blank">
-<img src="images/photo3.jpg">
-</a>
-</div>
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWT-DWoETqE/" data-instgrm-version="14"></blockquote>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+<br>
 
 <a class="btn" href="https://www.instagram.com/rajasthanassociation.be/" target="_blank">
-View Instagram
+View Instagram Profile
 </a>
+
 </div>
 
 <!-- CONTACT -->
 <div class="section" id="contact">
-<h2>Contact Us</h2>
+<h2>Contact</h2>
 
 <form action="https://formspree.io/f/xreolqpb" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Your Message" required></textarea>
-<button class="btn" type="submit">Send Message</button>
+<input type="text" name="name" placeholder="Name">
+<input type="email" name="email" placeholder="Email">
+<textarea name="message"></textarea>
+<button class="btn">Send</button>
 </form>
 
-<p>Email: info@rajasthanassociation.be</p>
-<p>Alternate: rajasthanassociationofbelgium@gmail.com</p>
+<p>info@rajasthanassociation.be</p>
+<p>rajasthanassociationofbelgium@gmail.com</p>
+
 </div>
 
 <!-- FOOTER -->
 <footer>
-<p>© Rajasthan Association of Belgium 🇧🇪</p>
+© Rajasthan Association of Belgium
 </footer>
-
-<!-- FLOAT BUTTONS -->
-<div class="float">
-<a href="https://www.instagram.com/rajasthanassociation.be/" target="_blank" style="background:#E1306C; padding:10px; border-radius:50%;">📸</a>
-<a href="https://www.facebook.com/profile.php?id=61579560795738" target="_blank" style="background:#1877F2; padding:10px; border-radius:50%;">👍</a>
-</div>
-
-<a href="https://chat.whatsapp.com/JDwIh6qdzNmEdoDYEeRovA" target="_blank"
-style="position:fixed; bottom:20px; left:20px; background:#25D366; color:white; padding:12px 18px; border-radius:50px; text-decoration:none;">
-💬 Join Community
-</a>
 
 <!-- SCROLL ANIMATION -->
 <script>
-const sections = document.querySelectorAll('.section');
-window.addEventListener('scroll', () => {
-sections.forEach(sec => {
-const top = sec.getBoundingClientRect().top;
-if(top < window.innerHeight - 100){
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
 sec.classList.add('show');
 }
 });
