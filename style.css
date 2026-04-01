@@ -26,3 +26,7 @@ nav a {
 section {
   padding:40px;
 }
+.hero .btn {
+  margin-top: 20px;
+  font-size: 16px;
+}
