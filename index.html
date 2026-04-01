@@ -5,89 +5,181 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {margin:0;font-family:'Segoe UI';scroll-behavior:smooth;}
-@media(max-width:768px){
-
-nav {
-flex-direction:column;
-}
-
-.hero h1 {
-font-size:26px;
-}
-
-.cards {
-flex-direction:column;
-align-items:center;
-}
-
-.gallery {
-grid-template-columns:1fr 1fr;
-}
-
+body {
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  scroll-behavior:smooth;
+  background:#faf6f0;
 }
 
 /* NAV */
 nav {
-display:flex;justify-content:space-between;align-items:center;
-padding:15px 30px;background:#8B0000;color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:linear-gradient(90deg,#8B0000,#b22222);
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 nav img {height:50px;}
-nav a {color:white;margin:10px;text-decoration:none;font-weight:bold;}
+nav a {
+  color:white;
+  margin:10px;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+nav a:hover {opacity:0.7;}
 
 /* HERO */
 .hero {
-height:90vh;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1609942072337-7dbbcd9a4d5a');
-background-size:cover;background-position:center;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-color:white;text-align:center;
+  height:90vh;
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1609942072337-7dbbcd9a4d5a');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-align:center;
 }
-.hero h1 {font-size:42px;}
-.hero p {font-size:18px;}
-
-/* SECTIONS */
-.section {padding:60px 20px;text-align:center;opacity:0;transform:translateY(40px);transition:1s;}
-.section.show {opacity:1;transform:translateY(0);}
-.section h2 {color:#8B0000;}
-
-/* CARDS */
-.cards {display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
-.card {
-width:260px;background:#f5f5f5;padding:20px;border-radius:12px;
-transition:0.3s;
+.hero h1 {
+  font-size:44px;
+  animation:fadeIn 1.5s ease;
 }
-.card:hover {transform:translateY(-8px);}
-
-/* GALLERY GRID */
-.gallery {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-padding:20px;
+.hero p {
+  font-size:18px;
+  margin-top:10px;
+  animation:fadeIn 2s ease;
 }
-.gallery img {
-width:100%;
-border-radius:10px;
-transition:0.3s;
-}
-.gallery img:hover {transform:scale(1.05);}
 
 /* BUTTON */
 .btn {
-padding:12px 20px;background:#d4a017;color:black;
-text-decoration:none;border-radius:8px;font-weight:bold;
+  margin-top:25px;
+  padding:14px 24px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+.btn:hover {
+  transform:scale(1.08);
 }
 
-/* FORM */
-form {max-width:400px;margin:auto;text-align:left;}
+/* SECTIONS */
+.section {
+  padding:70px 20px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.section.show {
+  opacity:1;
+  transform:translateY(0);
+}
+.section h2 {
+  color:#8B0000;
+  margin-bottom:15px;
+}
+
+/* CARDS */
+.cards {
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.card {
+  width:280px;
+  padding:25px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+.card:hover {
+  transform:translateY(-10px);
+}
+
+/* GALLERY */
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  padding:20px;
+}
+.gallery img {
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.gallery img:hover {
+  transform:scale(1.08);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* CONTACT */
+form {
+  max-width:400px;
+  margin:auto;
+}
 input, textarea {
-width:100%;padding:10px;margin:10px 0;border-radius:5px;border:1px solid #ccc;
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ddd;
 }
 
 /* FOOTER */
-footer {background:#8B0000;color:white;text-align:center;padding:20px;}
+footer {
+  background:#8B0000;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* FLOAT BUTTONS */
+.float {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.float a {
+  padding:12px;
+  border-radius:50%;
+  color:white;
+  text-decoration:none;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+nav {flex-direction:column;}
+.hero h1 {font-size:28px;}
+.cards {flex-direction:column;align-items:center;}
+}
 </style>
 </head>
 
@@ -111,15 +203,13 @@ footer {background:#8B0000;color:white;text-align:center;padding:20px;}
 <div class="hero">
 <h1>Rajasthan Association of Belgium 🇧🇪</h1>
 <p>Making Rajasthan visible in Belgium • Culture • Community • Traditions</p>
-
 <a href="https://chat.whatsapp.com/JDwIh6qdzNmEdoDYEeRovA" class="btn">Join Our Community 🤝</a>
-
 </div>
 
 <!-- ABOUT -->
 <div class="section" id="about">
 <h2>About Us</h2>
-<p>We are building a vibrant Rajasthani community in Belgium through culture, traditions and events.</p>
+<p>We are building a vibrant Rajasthani community in Belgium through culture, traditions and meaningful events.</p>
 </div>
 
 <!-- EVENTS -->
@@ -139,7 +229,8 @@ footer {background:#8B0000;color:white;text-align:center;padding:20px;}
 
 <!-- GALLERY -->
 <div class="section" id="gallery">
-<h2>Gallery</h2>
+<h2>Our Moments 📸</h2>
+<p>Capturing the spirit of Gangaur Celebration</p>
 
 <div class="gallery">
 <img src="images/photo1.jpg">
@@ -154,33 +245,20 @@ footer {background:#8B0000;color:white;text-align:center;padding:20px;}
 <img src="images/photo10.jpg">
 </div>
 
-<br>
 <a class="btn" href="https://drive.google.com/drive/folders/1YsfNeix-xWeQBiAVkyshauUg2ghuz3wb?usp=drive_link" target="_blank">
 View Full Gallery 📸
 </a>
-
 </div>
 
-<!-- INSTAGRAM -->
+<!-- SOCIAL -->
 <div class="section">
 <h2>Follow Us</h2>
-
-<p>
-<a class="btn" href="https://www.instagram.com/rajasthanassociation.be/" target="_blank">
-📸 Follow us on Instagram
-</a>
-</p>
-
-<p>
-<a class="btn" href="https://www.facebook.com/profile.php?id=61579560795738" target="_blank">
-👍 Follow us on Facebook
-</a>
-</p>
+<a class="btn" href="https://www.instagram.com/rajasthanassociation.be/" target="_blank">Instagram 📸</a>
+<a class="btn" href="https://www.facebook.com/profile.php?id=61579560795738" target="_blank">Facebook 👍</a>
 </div>
 
 <!-- CONTACT -->
 <div class="section" id="contact">
-
 <h2>Contact Us</h2>
 
 <form action="https://formspree.io/f/xreolqpb" method="POST">
@@ -192,7 +270,6 @@ View Full Gallery 📸
 
 <p>Email: info@rajasthanassociation.be</p>
 <p>Alternate: rajasthanassociationofbelgium@gmail.com</p>
-
 </div>
 
 <!-- FOOTER -->
@@ -200,10 +277,23 @@ View Full Gallery 📸
 <p>© Rajasthan Association of Belgium 🇧🇪</p>
 </footer>
 
-<!-- ANIMATION SCRIPT -->
+<!-- FLOAT BUTTONS -->
+<div class="float">
+<a href="https://www.instagram.com/rajasthanassociation.be/" target="_blank" style="background:#E1306C;">📸</a>
+<a href="https://www.facebook.com/profile.php?id=61579560795738" target="_blank" style="background:#1877F2;">👍</a>
+</div>
+
+<a href="https://chat.whatsapp.com/JDwIh6qdzNmEdoDYEeRovA" target="_blank"
+style="position:fixed; bottom:20px; left:20px;
+background:#25D366; color:white;
+padding:12px 18px; border-radius:50px;
+text-decoration:none; font-weight:bold;">
+💬 Join Community
+</a>
+
+<!-- SCROLL ANIMATION -->
 <script>
 const sections = document.querySelectorAll('.section');
-
 window.addEventListener('scroll', () => {
 sections.forEach(sec => {
 const top = sec.getBoundingClientRect().top;
@@ -213,25 +303,6 @@ sec.classList.add('show');
 });
 });
 </script>
-<div style="position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:10px;">
-  
-  <a href="https://www.instagram.com/rajasthanassociation.be/" target="_blank"
-  style="background:#E1306C;color:white;padding:10px 15px;border-radius:50px;text-decoration:none;">
-  📸
-  </a>
 
-  <a href="https://www.facebook.com/profile.php?id=61579560795738" target="_blank"
-  style="background:#1877F2;color:white;padding:10px 15px;border-radius:50px;text-decoration:none;">
-  👍
-  </a>
-
-</div>
-<a href="https://chat.whatsapp.com/JDwIh6qdzNmEdoDYEeRovA" target="_blank"
-style="position:fixed; bottom:20px; left:20px;
-background:#25D366; color:white;
-padding:12px 18px; border-radius:50px;
-text-decoration:none; font-weight:bold;">
-💬 Join Community
-</a>
 </body>
 </html>
