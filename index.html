@@ -180,13 +180,19 @@ View Full Gallery 📸
 
 <!-- CONTACT -->
 <div class="section" id="contact">
+
 <h2>Contact Us</h2>
 
-<form>
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Your Email">
-<textarea placeholder="Message"></textarea>
-<button class="btn">Send</button>
+<form action="https://formspree.io/f/xreolqpb" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Your Message" required></textarea>
+
+<button class="btn" type="submit">Send Message</button>
+
 </form>
 
 </div>
